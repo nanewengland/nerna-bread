@@ -3,7 +3,7 @@
 Plugin Name: bread
 Plugin URI: http://wordpress.org/extend/plugins/bread/
 Description: **DO NOT UPDATE** PJ - Maintains and generates a PDF Meeting List from BMLTW.
-Version: 1.5.3
+Version: 2.0.0
 */
 /* Disallow direct access to the plugin file */
 use Mpdf\Mpdf;
@@ -1180,6 +1180,8 @@ if (!class_exists("Bread")) {
 
 							
   
+  
+  							$data = str_replace('Jimmy Gillen Teen Center/Anchor Recovery', 'Anchor Recovery/Teen Cntr', $data);
 							$data = str_replace('First Congregation Church of Randolph', 'First Congr Chrch', $data);
 							$data = str_replace('Cataumet United Methodist Church', 'CataumetUnitedMethodistChrch', $data);
 							$data = str_replace('St Paul\'s United Methodist Church', 'StPaulMethodstChrch', $data);
@@ -1621,6 +1623,16 @@ $this->options['custom_section_content'] = "<p>&nbsp;</p><table style=\"width: 1
 </table>
 <table style=\"width: 100%;\" cellspacing=\"9\" cellpadding=\"9\">
 <tbody>
+
+<tr>
+<td style=\"border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #0055a4;\">&nbsp;</td>
+</tr>
+<tr>
+<td style=\"border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #0055a4;\">&nbsp;</td>
+</tr>
+<tr>
+<td style=\"border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #0055a4;\">&nbsp;</td>
+</tr>
 <tr>
 <td style=\"border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #0055a4;\">&nbsp;</td>
 </tr>
@@ -1671,7 +1683,7 @@ $this->options['custom_section_content'] = "<p>&nbsp;</p><table style=\"width: 1
 
 		function write_formats($formats, $page) {
 			if ( $formats == Null ) { return ''; }
-			$this->mpdf->WriteHTML('td{font-size: '.$this->options[$page.'_font_size']."pt;line-height:".$this->options[$page.'_line_height'].';color: spot(PANTONE Reflex Blue U, 50%, 100, 89, 0, 0) !important;}',1);
+			$this->mpdf->WriteHTML('td{font-size: '.$this->options[$page.'_font_size']."pt;line-height:".$this->options[$page.'_line_height'].';color: spot(PANTONE Reflex Blue U, 100%, 100, 89, 0, 0) !important;}',1);
 			$data .= "<table style='width:100%;font-size:".$this->options[$page.'_font_size']."pt;line-height:".$this->options[$page.'_line_height'].";'>";
 			$countmax = count ( $formats );
 			for ( $count = 0; $count < $countmax; $count++ ) {
